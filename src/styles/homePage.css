@@ -1,0 +1,57 @@
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.content {
+    height: 45vh;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+}
+
+
+.search-form {
+    width: 300px;
+    align-self: center;
+    border: none;
+    margin-top: 40px;
+}
+
+.search-input-container {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.search-input {
+    height: 34px;
+    margin-top: 4px;
+    border: 1px solid #979797;
+    border-radius: 4px;
+    padding: 2px 12px 2px 32px;
+}
+
+.name, .github-link {
+    width: auto;
+    max-width: 600px;
+    margin-bottom: 14px;
+    font-size: 18px;
+}
+
+.search-icon {
+    width: 14px;
+    height: 14px;
+    position: relative;
+    top: 28px;
+    left: 10px;
+}
