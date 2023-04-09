@@ -25,7 +25,7 @@ function HomePage() {
                     <input type="search" value={city} onChange={(e) => setCity(e.target.value)} className="search-input" placeholder="City" />
                 </div>
                 <div className='search-btn-container'>
-                    <button onClick={handleSearch}>Display Weather</button>
+                    <button disabled={!city} onClick={handleSearch}>Display Weather</button>
                 </div>
             </div>
 
