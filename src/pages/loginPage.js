@@ -12,11 +12,10 @@ function LoginPage() {
 
     return (
         <div className='container'>
-            <div className='content'>
+            <div className='login-content'>
                 <p>Welcome to the weather forecast web application. Please login with your Github user to use the application and view the weather in your city.</p>
                 <button className="btn" onClick={loginWithRedirect}>Login</button>
             </div>
-
         </div>
     );
 }
