@@ -1,11 +1,21 @@
 import React from "react";
 import loading from "../assets/icons/loading.svg";
-import '../styles/loading.css'
+
+import styled from 'styled-components'
+
+const StyledContainer = styled.div`
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+`
 
 const Loading = () => (
-  <div className="spinner">
+  <StyledContainer>
     <img src={loading} alt="Loading" />
-  </div>
+  </StyledContainer>
 );
 
 export default Loading;
