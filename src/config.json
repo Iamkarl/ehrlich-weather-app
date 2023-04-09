@@ -1,4 +1,6 @@
 {
     "domain": "dev-e6blg0h154ox2esr.us.auth0.com",
-    "clientId": "rOZTjFoYryWMYLbUltamOFmb7JOzqxZT"
+    "clientId": "rOZTjFoYryWMYLbUltamOFmb7JOzqxZT",
+    "weatherAPI": "https://api.openweathermap.org/data/2.5/weather",
+    "APIKey": "96f096792113c0e9d9e38ab8f64e6000"
 }

@@ -1,17 +1,40 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { withAuthenticationRequired } from '@auth0/auth0-react';
+import config from "../config.json";
 import '../styles/resultPage.css'
 
 function ResultPage() {
 
-    const goBack = (event) => {
-        event.preventDefault();
-        // Perform login logic here
+    const [city, setCity] = useState("");
+
+    const location = useLocation();
+
+    const navigate = useNavigate();
+
+    const goBack = () => {
+        navigate('/');
     }
+
+    const forecastDate = (date) => {
+        const forecastDate = new Date(date * 1000);
+        const day = forecastDate.getDate();
+        const month = forecastDate.getMonth() + 1;
+        const year = forecastDate.getFullYear();
+        return `${month}/${day}/${year}`;
+    }
+
+    useEffect(() => {
+        fetch(`${config.weatherAPI}?q=${location.state.city}&units=imperial&APPID=${config.APIKey}`)
+            .then(res => res.json())
+            .then(data => setCity(data))
+            .catch(error => console.error(error));
+    }, []);
 
     return (
         <div className='container'>
             <div className='content'>
-                <div className="city-name">Manila City</div>
+                <div className="city-name">{city.message ? `${city.message}: ${location.state.city}` : location.state.city}</div>
                 <table>
                     <thead>
                         <tr>
@@ -25,12 +48,12 @@ function ResultPage() {
                     </thead>
                     <tbody>
                         <tr>
-                            <td>09/01/2022</td>
-                            <td>75</td>
-                            <td>Sky is clear</td>
-                            <td>Clear</td>
-                            <td>1023.67</td>
-                            <td>100</td>
+                            <td>{forecastDate(city.dt)}</td>
+                            <td>{city.main ? city.main.temp : '-'}</td>
+                            <td>{city.weather ? city.weather[0].description : '-'}</td>
+                            <td>{city.weather ? city.weather[0].main : '-'}</td>
+                            <td>{city.main ? city.main.pressure : '-'}</td>
+                            <td>{city.main ? city.main.humidity : '-'}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -43,4 +66,7 @@ function ResultPage() {
     );
 }
 
-export default ResultPage;
+export default withAuthenticationRequired(ResultPage, {
+    // Show a message while the user waits to be redirected to the login page.
+    onRedirecting: () => (<div>Redirecting you to the login page...</div>)
+});
