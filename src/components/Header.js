@@ -48,7 +48,7 @@ function Header() {
             {isAuthenticated && <button className='logout-btn' onClick={() => {
                 logout({
                     logoutParams: {
-                        returnTo: window.location.origin
+                        returnTo: `http://localhost:3000/login`
                     }
                 });
             }}>Logout</button>
